@@ -10,7 +10,7 @@ import machineD2 from './machine_infoD2.svg'
 
 const InfoBlock = () => {
   return ( 
-    <section className="pb-[76px] relative overflow-hidden">
+    <section className="pb-[76px] relative overflow-hidden" id="contacts">
       <Image src={machine} alt="татуировочная машинка" className="lg:hidden absolute -z-50 bottom-[-130px] right-0" />
       <Image src={machineD} alt="татуировочная машинка" className="hidden xl:block absolute -z-50 bottom-[-351px] right-0"  />
       <Image src={machineD2} alt="татуировочная машинка" className="hidden xl:block absolute -z-50 bottom-[-341px] right-0"  />

@@ -23,7 +23,7 @@ const Burger = ({ setOpen, open }: IBurger) => {
     { text: "Мастера", href: "/#masters" },
     { text: "Отзывы", href: routes.reviews },
     { text: "Обучение", href: routes.education },
-    { text: "Контакты", href: routes.contacts },
+    { text: "Контакты", href: '/#contacts' },
   ];
 
   const phone = "+7 916 053 23 23";
