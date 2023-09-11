@@ -1,5 +1,5 @@
 class Api {
-  token: string;
+  token: string | undefined;
   headers: any;
 
   constructor(token: string) {
@@ -55,5 +55,9 @@ class Api {
     return res.json();
   }
 }
+
+const token = process.env.NEXT_PUBLIC_API_KEY;
+
+const api = new Api(token);
 
 export default Api;
