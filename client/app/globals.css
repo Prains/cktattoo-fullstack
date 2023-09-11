@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-main {
+  @apply text-[10px]
+    font-normal
+    leading-relaxed
+    text-neutral-800 md:text-2xl;
+}
+
+.text-semibold {
+  @apply text-base
+    font-semibold md:text-4xl;
+}
+
+.text-title {
+  @apply text-[24px] font-semibold text-neutral-800 md:text-[46px];
+}
+
+.button {
+  @apply rounded-[5px] bg-stone-500 py-4 text-[10px] font-bold text-neutral-200 transition-all hover:bg-neutral-200 hover:text-[#83746E] md:py-[30px] md:text-xl;
+}
