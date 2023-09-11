@@ -11,7 +11,6 @@ const getMasters = async (id: string) => {
 const MasterPage = async ({ params }: any) => {
   const { id } = params;
   const mastersData = await getMasters(id);
-  console.log(mastersData);
   return <Master mastersData={mastersData} />;
 };
 

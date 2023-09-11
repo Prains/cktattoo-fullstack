@@ -14,10 +14,8 @@ interface MasterPageProps {
 }
 
 const Master = ({ mastersData }: MasterPageProps) => {
-  const portfolio = Array(5).fill("/images/portfolioItem.png");
   const workingImage = `${routes.backend}${mastersData.attributes.workingPhoto.data.attributes.url}`;
   const { portolioImages } = mastersData.attributes;
-  console.log(mastersData);
   return (
     <main>
       <MasterItem id={mastersData.id} index={1} {...mastersData.attributes} />
