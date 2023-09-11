@@ -2,7 +2,7 @@ class Api {
   token: string | undefined;
   headers: any;
 
-  constructor(token: string) {
+  constructor(token: string | undefined) {
     this.token = token;
     this.headers = {
       "Content-Type": "application/json",
