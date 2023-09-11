@@ -3,32 +3,41 @@ import MasterItem from "../Mainpage/MastersBlock/MasterItem/MasterItem";
 import ContentZone from "../ui/ContentZone/ContentZone";
 import MasterDesriptionAndWorkingImage from "./MasterDesriptionAndWorkingImage/MasterDesriptionAndWorkingImage";
 import Image from "next/image";
+import IMaster from "@/interfaces/IMaster";
+import routes from "@/utils/routes";
 
-const Master = () => {
+interface MasterPageProps {
+  mastersData: {
+    id: number;
+    attributes: IMaster;
+  };
+}
+
+const Master = ({ mastersData }: MasterPageProps) => {
   const portfolio = Array(5).fill("/images/portfolioItem.png");
+  const workingImage = `${routes.backend}${mastersData.attributes.workingPhoto.data.attributes.url}`;
+  const { portolioImages } = mastersData.attributes;
+  console.log(mastersData);
   return (
     <main>
-      <MasterItem
-        id={1}
-        image="/images/polina.png"
-        name="Мастер полина"
-        experience={8}
-        role="Мастер"
-        price={13000}
-      />
+      <MasterItem id={mastersData.id} index={1} {...mastersData.attributes} />
       <ContentZone className="flex flex-col">
-        <MasterDesriptionAndWorkingImage />
+        <MasterDesriptionAndWorkingImage
+          description={mastersData.attributes.description}
+          workingImage={workingImage}
+        />
         <ul className="mb-6 flex flex-wrap items-center justify-center gap-10">
-          {portfolio.map((portfolioItem, index) => {
+          {portolioImages.data.map((portfolioItem, index) => {
+            const imageLink = `${routes.backend}${portfolioItem.attributes.image.data.attributes.url}`;
             return (
               <li key={index}>
                 <Image
-                  src={portfolioItem}
+                  src={imageLink}
                   alt="фотография работы мастера"
                   width={560}
                   height={300}
                 />
-              </li> 
+              </li>
             );
           })}
         </ul>

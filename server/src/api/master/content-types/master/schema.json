@@ -42,6 +42,14 @@
       "mappedBy": "master"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "workingPhoto": {
       "allowedTypes": [
         "images"
       ],

@@ -11,7 +11,7 @@ const DesktopHeader = () => {
   const navList = [
     { text: "Портфолио", href: routes.portfolio },
     { text: "О студии", href: routes.about },
-    { text: "Мастера", href: '#masters' },
+    { text: "Мастера", href: '/#masters' },
     { text: "Отзывы", href: routes.reviews },
     { text: "Обучение", href: routes.education },
     { text: "Контакты", href: routes.contacts },

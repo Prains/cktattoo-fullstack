@@ -4,7 +4,8 @@
   "info": {
     "singularName": "portolio-image",
     "pluralName": "portolio-images",
-    "displayName": "portolio-image"
+    "displayName": "portolio-image",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,12 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": true
+      ]
     },
     "master": {
       "type": "relation",

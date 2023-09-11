@@ -5,7 +5,27 @@ interface IMaster {
   description: string;
   price: string;
   status: string;
+  portolioImages: {
+    data: {
+      attributes: {
+        image: {
+          data: {
+            attributes: {
+              url: string;
+            };
+          };
+        };
+      };
+    }[];
+  };
   image: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
+  workingPhoto: {
     data: {
       attributes: {
         url: string;
