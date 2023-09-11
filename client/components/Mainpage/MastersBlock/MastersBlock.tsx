@@ -2,28 +2,17 @@
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
 import { rightLineDesktop } from "@/images/desktop";
-import masterImage from "./photo.png";
 import MasterItem from "./MasterItem/MasterItem";
 import ContentZone from "@/components/ui/ContentZone/ContentZone";
 import Link from "next/link";
 import lion from "./lion_master.svg";
-import api from "@/utils/classes/Api";
-import { useState, useEffect } from "react";
-import routes from "@/utils/routes";
+import IMaster from "@/interfaces/IMaster";
 
-const MastersBlock = () => {
-  const [mastersInformation, setMastersInformation] = useState(null as any);
-  console.log(mastersInformation);
+interface MastersBlockProps {
+  mastersData: { id: number; attributes: IMaster }[];
+}
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await api.get(`${routes.backend}/api/masters?populate=*`);
-      setMastersInformation(data.data);
-    };
-    getData();
-  }, []);
-
-  if (!mastersInformation) return null;
+const MastersBlock = ({ mastersData }: MastersBlockProps) => {
 
   return (
     <section className="relative" id="masters">
@@ -67,7 +56,7 @@ const MastersBlock = () => {
             },
           }}
         >
-          {mastersInformation.map((master: any, index: any) => {
+          {mastersData.map((master: any, index: any) => {
             return (
               <Carousel.Slide key={index + 1}>
                 <MasterItem
@@ -80,7 +69,7 @@ const MastersBlock = () => {
           })}
         </Carousel>
         <div className="hidden flex-col gap-10 lg:mb-24 lg:flex">
-          {mastersInformation.map((master: any, index: any) => {
+          {mastersData.map((master: any, index: any) => {
             return (
               <div key={index + 1}>
                 <MasterItem

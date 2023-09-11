@@ -8,18 +8,17 @@ import MobileMainBlock from "./MobileMainBlock/MobileMainBlock";
 import PortfolioSlider from "./PortfolioSlider/PortfolioSlider";
 import ReviewsBlock from "./ReviewsBlock/ReviewsBlock";
 import VideosBlock from "./VideosBlock/VideosBlock";
-import portfolioMock from "./portfSmall.png";
-import portfolioBigMock from "./portfBig.png";
 import Image from "next/image";
 import machine from "./logo_machine.svg";
+import IPortfolioImage from "@/interfaces/IPortfolioImage";
+import IMaster from "@/interfaces/IMaster";
 
-const Mainpage = () => {
-  const portfolioImages = [
-    { img1: portfolioBigMock, img2: portfolioMock, img3: portfolioMock },
-    { img1: portfolioBigMock, img2: portfolioMock, img3: portfolioMock },
-    { img1: portfolioBigMock, img2: portfolioMock, img3: portfolioMock },
-  ];
+interface MainpageProps {
+  portfolioImages: { id: number; attributes: IPortfolioImage }[];
+  mastersData: { id: number; attributes: IMaster }[];
+}
 
+const Mainpage = ({ portfolioImages, mastersData }: MainpageProps) => {
   return (
     <main className="flex flex-col gap-[55px] lg:gap-[150px]">
       <div className="relative">
@@ -32,7 +31,7 @@ const Mainpage = () => {
         <DesktopMainBlock />
       </div>
       <PortfolioSlider portfolioImages={portfolioImages} />
-      <MastersBlock />
+      <MastersBlock mastersData={mastersData} />
       <AboutStudioBlock />
       <AdvantagesBlock />
       <EducatuonBlock />

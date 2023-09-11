@@ -4,26 +4,41 @@ import Link from "next/link";
 import { leftLine } from "@/images/burger";
 import { leftLineDesktop, rightLineDesktop } from "@/images/desktop";
 import { Carousel } from "@mantine/carousel";
-import lion from './lion_logo.svg'
-import lionD from './lion_portfolioD.svg'
-import machineD from './machine_portfolioD.svg'
-import machineD2 from './machine_portfolioD2.svg'
+import lion from "./lion_logo.svg";
+import lionD from "./lion_portfolioD.svg";
+import machineD from "./machine_portfolioD.svg";
+import machineD2 from "./machine_portfolioD2.svg";
+import IPortfolioImage from "@/interfaces/IPortfolioImage";
+import routes from "@/utils/routes";
 
 interface PSlider {
-  portfolioImages: {
-    img1: { src: string };
-    img2: { src: string };
-    img3: { src: string };
-  }[];
+  portfolioImages: { id: number; attributes: IPortfolioImage }[];
 }
 
 const PortfolioSlider = ({ portfolioImages }: PSlider) => {
+
   return (
-    <section className="flex flex-col relative">
-      <Image src={lion} alt="лев" className="lg:hidden absolute -z-50 top-[-115px] left-0" />
-      <Image src={lionD} alt="лев" className="hidden xl:block absolute -z-50 top-[-230px] left-[125px]"  />
-      <Image src={machineD} alt="татуировочная машинка" className="hidden xl:block absolute -z-50 bottom-[-281px] right-0"  />
-      <Image src={machineD2} alt="татуировочная машинка" className="hidden xl:block absolute -z-50 bottom-[-271px] right-0"  />
+    <section className="relative flex flex-col">
+      <Image
+        src={lion}
+        alt="лев"
+        className="absolute left-0 top-[-115px] -z-50 lg:hidden"
+      />
+      <Image
+        src={lionD}
+        alt="лев"
+        className="absolute left-[125px] top-[-230px] -z-50 hidden xl:block"
+      />
+      <Image
+        src={machineD}
+        alt="татуировочная машинка"
+        className="absolute bottom-[-281px] right-0 -z-50 hidden xl:block"
+      />
+      <Image
+        src={machineD2}
+        alt="татуировочная машинка"
+        className="absolute bottom-[-271px] right-0 -z-50 hidden xl:block"
+      />
       <h2 className="text-semibold mb-9 flex items-center self-center uppercase text-stone-500 xl:mb-[96px]">
         <Image
           src={leftLine}
@@ -76,14 +91,14 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
               <>
                 <Carousel.Slide key={index} className="z-0">
                   <Image
-                    src={image.img1.src}
+                    src={`${routes.backend}${image.attributes.image.data.attributes.url}`}
                     alt="изображение татуировки на теле человека"
                     width={290}
                     height={232}
                     className="z-0 mx-auto h-[232px] rounded-[10px] object-cover object-center"
                   />
                 </Carousel.Slide>
-                <Carousel.Slide key={index} className="z-0">
+{/*                 <Carousel.Slide key={index} className="z-0">
                   <Image
                     src={image.img2.src}
                     alt="изображение татуировки на теле человека"
@@ -100,7 +115,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
                     height={387}
                     className="z-0 mx-auto h-[232px] rounded-[10px] object-cover object-center"
                   />
-                </Carousel.Slide>
+                </Carousel.Slide> */}
               </>
             );
           })}
@@ -137,13 +152,13 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
                   <div className="flex justify-center gap-10">
                     <Image
                       // BUG Не понял, как правильно поменять типизацию
-                      src={image.img1.src}
+                      src={`${routes.backend}${image.attributes.image.data.attributes.url}`}
                       alt="изображение татуировки на теле человека"
                       width={290}
                       height={232}
                       className="z-0 h-[638px] w-[560px] rounded-[10px] object-contain object-center"
                     />
-                    <div className="flex flex-col gap-10">
+       {/*              <div className="flex flex-col gap-10">
                       <Image
                         src={image.img2.src}
                         alt="изображение татуировки на теле человека"
@@ -158,7 +173,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
                         height={387}
                         className="z-0 mx-auto h-[300px] w-[560px] rounded-[10px] object-contain object-center"
                       />
-                    </div>
+                    </div> */}
                   </div>
                 </Carousel.Slide>
               </>
