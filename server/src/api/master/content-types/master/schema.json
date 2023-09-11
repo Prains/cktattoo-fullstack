@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "masters",
+  "info": {
+    "singularName": "master",
+    "pluralName": "masters",
+    "displayName": "master",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "experienceYears": {
+      "required": true,
+      "type": "integer"
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Мастер"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "portolioImages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::portolio-image.portolio-image",
+      "mappedBy": "master"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
