@@ -60,4 +60,4 @@ const token = process.env.NEXT_PUBLIC_API_KEY;
 
 const api = new Api(token);
 
-export default Api;
+export default api;

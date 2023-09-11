@@ -7,6 +7,7 @@ const routes = {
   contacts: '/contacts',
   education: '/education',
   profile: '/profile',
+  backend: 'http://localhost:1337'
 };
 
 export default routes;

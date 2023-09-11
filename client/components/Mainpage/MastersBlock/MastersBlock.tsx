@@ -3,58 +3,28 @@ import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
 import { rightLineDesktop } from "@/images/desktop";
 import masterImage from "./photo.png";
-import masterImage2 from "./photo2.png";
-import masterImage3 from "./photo3.png";
-import masterImage4 from "./photo4.png";
-import masterImage5 from "./photo5.png";
 import MasterItem from "./MasterItem/MasterItem";
 import ContentZone from "@/components/ui/ContentZone/ContentZone";
 import Link from "next/link";
 import lion from "./lion_master.svg";
+import api from "@/utils/classes/Api";
+import { useState, useEffect } from "react";
+import routes from "@/utils/routes";
 
 const MastersBlock = () => {
-  const masters = [
-    {
-      id: 1,
-      image: masterImage.src,
-      name: "Максим Витолиньш",
-      experience: 15,
-      role: "Топ-мастер, преподаватель",
-      price: 15000,
-    },
-    {
-      id: 2,
-      image: masterImage2.src,
-      name: "Полина",
-      experience: 8,
-      role: "Мастер",
-      price: 13000,
-    },
-    {
-      id: 3,
-      image: masterImage3.src,
-      name: "Мария",
-      experience: 8,
-      role: "Мастер",
-      price: 12000,
-    },
-    {
-      id: 4,
-      image: masterImage4.src,
-      name: "Евгений",
-      experience: 2,
-      role: "Мастер",
-      price: 6000,
-    },
-    {
-      id: 5,
-      image: masterImage5.src,
-      name: "Анастасия",
-      experience: 1,
-      role: "Мастер",
-      price: 6000,
-    },
-  ];
+  const [mastersInformation, setMastersInformation] = useState(null as any);
+  console.log(mastersInformation);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await api.get(`${routes.backend}/api/masters?populate=*`);
+      setMastersInformation(data.data);
+    };
+    getData();
+  }, []);
+
+  if (!mastersInformation) return null;
+
   return (
     <section className="relative" id="masters">
       <Image
@@ -97,19 +67,27 @@ const MastersBlock = () => {
             },
           }}
         >
-          {masters.map((master, index) => {
+          {mastersInformation.map((master: any, index: any) => {
             return (
-              <Carousel.Slide key={index}>
-                <MasterItem {...master} />
+              <Carousel.Slide key={index + 1}>
+                <MasterItem
+                  {...master.attributes}
+                  index={index + 1}
+                  id={master.id}
+                />
               </Carousel.Slide>
             );
           })}
         </Carousel>
         <div className="hidden flex-col gap-10 lg:mb-24 lg:flex">
-          {masters.map((master, index) => {
+          {mastersInformation.map((master: any, index: any) => {
             return (
-              <div key={index}>
-                <MasterItem {...master} />
+              <div key={index + 1}>
+                <MasterItem
+                  {...master.attributes}
+                  index={index + 1}
+                  id={master.id}
+                />
               </div>
             );
           })}
