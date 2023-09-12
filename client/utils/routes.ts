@@ -7,7 +7,7 @@ const routes = {
   contacts: '/contacts',
   education: '/education',
   profile: '/profile',
-  backend: 'http://localhost:1337'
+  backend: 'https://cktattoo.ru/strapi'
 };
 
 export default routes;
