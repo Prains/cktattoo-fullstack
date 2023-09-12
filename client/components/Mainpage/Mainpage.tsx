@@ -17,7 +17,7 @@ import IReview from "@/interfaces/IReview";
 interface MainpageProps {
   portfolioImages: { id: number; attributes: IPortfolioImage }[];
   mastersData: { id: number; attributes: IMaster }[];
-  reviewsData: { id: number; attributes: IReview };
+  reviewsData: { id: number; attributes: IReview }[];
 }
 
 const Mainpage = ({
