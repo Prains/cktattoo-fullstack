@@ -15,23 +15,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const stories = [
-    {
-      image: mock.src,
-    },
-    {
-      image: mock.src,
-    },
-    {
-      image: mock.src,
-    },
-  ];
 
   return (
     <html lang="ru" className={mont.className}>
       <body className="bg-neutral-200 transition-all">
         <Header />
-        <Stories stories={stories} />
+        <Stories />
         {children}
         <Footer />
       </body>

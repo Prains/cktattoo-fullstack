@@ -11,13 +11,17 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Overlay from "@/components/ui/Overlay";
 import { useState } from "react";
+import routes from "@/utils/routes";
 
 // TODO сделать параметр просмотренного сторис
 
 interface ActiveStory {
   setOpen(value: boolean): void;
   stories: {
-    image: string;
+    id: number;
+    attributes: {
+      url: string;
+    };
   }[];
   pagination: number;
 }
@@ -34,6 +38,7 @@ const ActiveStory = ({ setOpen, stories, pagination }: ActiveStory) => {
       >
         <Slider>
           {stories.map((story, index) => {
+            const storyImage = story.attributes.url;
             return (
               <Slide
                 key={index}
@@ -41,7 +46,7 @@ const ActiveStory = ({ setOpen, stories, pagination }: ActiveStory) => {
                 className="rounded-3xl border-2 border-pink-600 bg-[#202020] py-6"
               >
                 <Image
-                  src={story.image}
+                  src={`${routes.backend}${storyImage}`}
                   alt="история cktattoo"
                   width={315}
                   height={631}
