@@ -1,9 +1,15 @@
 import ReviewsPage from "@/components/ReviewsPage/ReviewsPage";
-import review from "../../components/Mainpage/ReviewsBlock/77a0228dae80f24cc69f4bf9847be1ac.png";
+import api from "@/utils/classes/Api";
+import routes from "@/utils/routes";
 
-const Reviews = () => {
-  const reviews = Array(5).fill(review.src);
-  return <ReviewsPage reviews={reviews} />;
+const getReviews = async () => {
+  const data = await api.get(`${routes.backend}/api/review?populate=*`);
+  return data.data.attributes.image.data;
+};
+
+const Reviews = async () => {
+  const reviewsData = await getReviews();
+  return <ReviewsPage reviewsData={reviewsData} />;
 };
 
 export default Reviews;

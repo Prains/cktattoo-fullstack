@@ -12,13 +12,19 @@ import Image from "next/image";
 import machine from "./logo_machine.svg";
 import IPortfolioImage from "@/interfaces/IPortfolioImage";
 import IMaster from "@/interfaces/IMaster";
+import IReview from "@/interfaces/IReview";
 
 interface MainpageProps {
   portfolioImages: { id: number; attributes: IPortfolioImage }[];
   mastersData: { id: number; attributes: IMaster }[];
+  reviewsData: { id: number; attributes: IReview };
 }
 
-const Mainpage = ({ portfolioImages, mastersData }: MainpageProps) => {
+const Mainpage = ({
+  portfolioImages,
+  mastersData,
+  reviewsData,
+}: MainpageProps) => {
   return (
     <main className="flex flex-col gap-[55px] lg:gap-[150px]">
       <div className="relative">
@@ -35,7 +41,7 @@ const Mainpage = ({ portfolioImages, mastersData }: MainpageProps) => {
       <AboutStudioBlock />
       <AdvantagesBlock />
       <EducatuonBlock />
-      <ReviewsBlock />
+      <ReviewsBlock reviewsData={reviewsData} />
       <VideosBlock />
       <InfoBlock />
     </main>
