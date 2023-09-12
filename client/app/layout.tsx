@@ -3,7 +3,7 @@ import Header from "@/components/Header/Header";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";
 import Stories from "@/components/Stories/Stories";
-import mock from "@/images/Stories/storiesMockImage.png";
+import Providers from "@/components/Providers/Providers";
 
 const mont = Montserrat({
   subsets: ["latin"],
@@ -15,14 +15,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="ru" className={mont.className}>
       <body className="bg-neutral-200 transition-all">
-        <Header />
-        <Stories />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          <Stories />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -5,8 +5,7 @@ import { useState, useEffect } from "react";
 import leftMachine from "./machine_mainLeft.svg";
 import rightMachine from "./machine_mainRight.svg";
 import Image from "next/image";
-import api from "@/utils/classes/Api";
-import routes from "@/utils/routes";
+import { useAppSelector } from "@/hooks/useReduxHooks";
 
 interface Stories {
   stories: { image: string }[];
@@ -15,22 +14,11 @@ interface Stories {
 const Stories = () => {
   const [open, setOpen] = useState(false);
   const [pagination, setPagination] = useState(0);
-  const [stories, setStories] = useState(null as any);
+  const { stories } = useAppSelector((state) => state.stories);
   const handleOpen = (index: number) => {
     setPagination(index);
     setOpen(true);
   };
-
-  useEffect(() => {
-    const getStories = async () => {
-      const data = await api.get(`${routes.backend}/api/story?populate=*`);
-      setStories(data.data.attributes.image.data);
-    };
-    getStories();
-  }, []);
-
-  if (!stories) return null;
-
 
   return (
     <section className="my-7 flex items-center justify-center gap-6 lg:my-[60px]">

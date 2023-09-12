@@ -9,12 +9,16 @@ import { Carousel } from "@mantine/carousel";
 import lionD from "./lion_reviewsD.svg";
 import IReview from "@/interfaces/IReview";
 import routes from "@/utils/routes";
+import { useAppSelector } from "@/hooks/useReduxHooks";
 
 interface ReviewsBlockProps {
   reviewsData: { id: number; attributes: IReview }[];
 }
 
-const ReviewsBlock = ({ reviewsData }: ReviewsBlockProps) => {
+const ReviewsBlock = () => {
+  const { reviews } = useAppSelector((state) => state.reviews);
+
+  const reviewsData = reviews as any;
 
   return (
     <section className="relative">
@@ -70,7 +74,7 @@ const ReviewsBlock = ({ reviewsData }: ReviewsBlockProps) => {
             },
           }}
         >
-          {reviewsData.map((review) => {
+          {reviewsData.map((review: any) => {
             const reviewsImage = `${routes.backend}${review.attributes.url}`;
             return (
               <Carousel.Slide key={review.id}>
@@ -114,7 +118,7 @@ const ReviewsBlock = ({ reviewsData }: ReviewsBlockProps) => {
             },
           }}
         >
-          {reviewsData.map((review) => {
+          {reviewsData.map((review: any) => {
             const reviewsImage = `${routes.backend}${review.attributes.url}`;
             return (
               <Carousel.Slide key={review.id}>

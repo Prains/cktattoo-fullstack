@@ -1,13 +1,13 @@
+"use client";
 import Image from "next/image";
 import ContentZone from "../ui/ContentZone/ContentZone";
 import routes from "@/utils/routes";
-import IReview from "@/interfaces/IReview";
+import { useAppSelector } from "@/hooks/useReduxHooks";
 
-interface IReviewsPage {
-  reviewsData: { id: number; attributes: IReview }[];
-}
+const ReviewsPage = () => {
+  const { reviews } = useAppSelector((state) => state.reviews);
 
-const ReviewsPage = ({ reviewsData }: IReviewsPage) => {
+  const reviewsData = reviews as any;
   return (
     <main className="mb-6 flex flex-col items-center justify-center gap-6 lg:mb-16 lg:gap-16">
       <ContentZone>
@@ -15,7 +15,7 @@ const ReviewsPage = ({ reviewsData }: IReviewsPage) => {
           Отзывы клиентов
         </h1>
         <ul className="flex flex-wrap items-start justify-center gap-5">
-          {reviewsData.map((review, index) => {
+          {reviewsData.map((review: any, index: any) => {
             const reviewsImage = `${routes.backend}${review.attributes.url}`;
             return (
               <li key={index}>

@@ -8,14 +8,12 @@ import lion from "./lion_logo.svg";
 import lionD from "./lion_portfolioD.svg";
 import machineD from "./machine_portfolioD.svg";
 import machineD2 from "./machine_portfolioD2.svg";
-import IPortfolioImage from "@/interfaces/IPortfolioImage";
 import routes from "@/utils/routes";
+import { useAppSelector } from "@/hooks/useReduxHooks";
 
-interface PSlider {
-  portfolioImages: { id: number; attributes: IPortfolioImage }[];
-}
-
-const PortfolioSlider = ({ portfolioImages }: PSlider) => {
+const PortfolioSlider = () => {
+  const { portfolio } = useAppSelector((state) => state.portfolio);
+  const portfolioImages = portfolio as any;
 
   return (
     <section className="relative flex flex-col">
@@ -86,7 +84,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
             },
           }}
         >
-          {portfolioImages.map((image, index) => {
+          {portfolioImages.map((image: any, index: any) => {
             return (
               <>
                 <Carousel.Slide key={index} className="z-0">
@@ -98,7 +96,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
                     className="z-0 mx-auto h-[232px] rounded-[10px] object-cover object-center"
                   />
                 </Carousel.Slide>
-{/*                 <Carousel.Slide key={index} className="z-0">
+                {/*                 <Carousel.Slide key={index} className="z-0">
                   <Image
                     src={image.img2.src}
                     alt="изображение татуировки на теле человека"
@@ -145,7 +143,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
             },
           }}
         >
-          {portfolioImages.map((image, index) => {
+          {portfolioImages.map((image:any, index:any) => {
             return (
               <>
                 <Carousel.Slide key={index} className="z-0">
@@ -158,7 +156,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
                       height={232}
                       className="z-0 h-[638px] w-[560px] rounded-[10px] object-contain object-center"
                     />
-       {/*              <div className="flex flex-col gap-10">
+                    {/*              <div className="flex flex-col gap-10">
                       <Image
                         src={image.img2.src}
                         alt="изображение татуировки на теле человека"
@@ -182,7 +180,7 @@ const PortfolioSlider = ({ portfolioImages }: PSlider) => {
         </Carousel>
       </div>
       <Link
-        href={"/"}
+        href={routes.portfolio}
         className="button self-center px-10 uppercase xl:mt-[32px] xl:h-[80px] xl:w-[400px] xl:text-center"
       >
         больше работ

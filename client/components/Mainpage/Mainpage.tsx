@@ -20,11 +20,7 @@ interface MainpageProps {
   reviewsData: { id: number; attributes: IReview }[];
 }
 
-const Mainpage = ({
-  portfolioImages,
-  mastersData,
-  reviewsData,
-}: MainpageProps) => {
+const Mainpage = ({ portfolioImages, mastersData }: MainpageProps) => {
   return (
     <main className="flex flex-col gap-[55px] lg:gap-[150px]">
       <div className="relative">
@@ -41,7 +37,7 @@ const Mainpage = ({
       <AboutStudioBlock />
       <AdvantagesBlock />
       <EducatuonBlock />
-      <ReviewsBlock reviewsData={reviewsData} />
+      <ReviewsBlock />
       <VideosBlock />
       <InfoBlock />
     </main>
