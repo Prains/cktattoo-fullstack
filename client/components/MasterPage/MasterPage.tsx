@@ -18,6 +18,7 @@ const Master = ({ mastersData }: MasterPageProps) => {
   const { portolioImages } = mastersData.attributes;
   return (
     <main>
+      {/* @ts-ignore */}
       <MasterItem id={mastersData.id} index={1} {...mastersData.attributes} />
       <ContentZone className="flex flex-col">
         <MasterDesriptionAndWorkingImage
