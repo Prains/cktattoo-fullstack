@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_education_components_lesson_blocks",
+  "info": {
+    "displayName": "lessonBlock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
