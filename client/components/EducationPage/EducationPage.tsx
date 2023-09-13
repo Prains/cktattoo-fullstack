@@ -1,7 +1,16 @@
+import IEducationProgramm from "@/interfaces/IEducationProgramm";
 import ContentZone from "../ui/ContentZone/ContentZone";
 import EducationItem from "./EducationItem/EducationItem";
 
-const EducationPage = () => {
+interface EducationPageProps {
+  educationProgramms: {
+    id: number;
+    attributes: IEducationProgramm;
+  }[];
+}
+
+const EducationPage = ({ educationProgramms }: EducationPageProps) => {
+  console.log(educationProgramms);
   return (
     <main>
       <ContentZone className="flex flex-col items-center justify-center">
@@ -20,8 +29,16 @@ const EducationPage = () => {
             обучения.
           </p>
         </div>
-        <EducationItem />
-        <EducationItem />
+        {educationProgramms.map((item, index) => {
+          const { lessonBlocks, name } = item.attributes;
+          return (
+            <EducationItem
+              name={name}
+              lessonBlocks={lessonBlocks}
+              key={index}
+            />
+          );
+        })}
       </ContentZone>
     </main>
   );
