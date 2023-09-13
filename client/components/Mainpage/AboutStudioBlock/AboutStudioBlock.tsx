@@ -7,6 +7,7 @@ import Link from "next/link";
 import machine from './machine_about.svg'
 import machineD from './machine_aboutD.svg'
 import machineD2 from './machine_aboutD2.svg'
+import routes from "@/utils/routes";
 
 const AboutStudioBlock = () => {
   return (
@@ -50,17 +51,17 @@ const AboutStudioBlock = () => {
             больше <br />о студии
           </Link>
           <Link
-            href={"/"}
+            href={'/#contacts'}
             className="text-main !leading-normal border border-[#1A0F0C] rounded-[5px] leading-[14px] w-full px-6 py-[4px] text-center uppercase lg:hidden"
           >
             добраться <br />
             до нас
           </Link>
-          <Link className="hidden lg:flex button leading-[14px] justify-center items-center uppercase w-[400px] h-[80px]" href={"/"}>
+          <Link className="hidden lg:flex button leading-[14px] justify-center items-center uppercase w-[400px] h-[80px]" href={routes.about}>
             больше о студии
           </Link>
           <Link
-            href={"/"}
+            href={'/#contacts'}
             className="hidden lg:flex text-xl text-[#83746E] font-bold !leading-normal border-[2px] border-[#83746E] rounded-[5px] w-[400px] h-[80px] items-center justify-center uppercase"
           >
             добраться до нас
