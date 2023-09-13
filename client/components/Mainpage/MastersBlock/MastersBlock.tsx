@@ -6,13 +6,12 @@ import MasterItem from "./MasterItem/MasterItem";
 import ContentZone from "@/components/ui/ContentZone/ContentZone";
 import Link from "next/link";
 import lion from "./lion_master.svg";
-import IMaster from "@/interfaces/IMaster";
+import { useAppSelector } from "@/hooks/useReduxHooks";
 
-interface MastersBlockProps {
-  mastersData: { id: number; attributes: IMaster }[];
-}
+const MastersBlock = () => {
+  const { masters } = useAppSelector((state) => state.masters);
 
-const MastersBlock = ({ mastersData }: MastersBlockProps) => {
+  const mastersData = masters as any;
 
   return (
     <section className="relative" id="masters">

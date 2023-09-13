@@ -9,18 +9,10 @@ import PortfolioSlider from "./PortfolioSlider/PortfolioSlider";
 import ReviewsBlock from "./ReviewsBlock/ReviewsBlock";
 import VideosBlock from "./VideosBlock/VideosBlock";
 import Image from "next/image";
-import machine from "./logo_machine.svg";
-import IPortfolioImage from "@/interfaces/IPortfolioImage";
-import IMaster from "@/interfaces/IMaster";
-import IReview from "@/interfaces/IReview";
+import machine from "./logo_machine.svg"; 
 
-interface MainpageProps {
-  portfolioImages: { id: number; attributes: IPortfolioImage }[];
-  mastersData: { id: number; attributes: IMaster }[];
-  reviewsData: { id: number; attributes: IReview }[];
-}
 
-const Mainpage = ({ portfolioImages, mastersData }: MainpageProps) => {
+const Mainpage = () => {
   return (
     <main className="flex flex-col gap-[55px] lg:gap-[150px]">
       <div className="relative">
@@ -30,10 +22,10 @@ const Mainpage = ({ portfolioImages, mastersData }: MainpageProps) => {
           className="absolute right-0 -z-50 lg:hidden"
         />
         <MobileMainBlock />
-        <DesktopMainBlock />
+        <DesktopMainBlock />Z
       </div>
-      <PortfolioSlider portfolioImages={portfolioImages} />
-      <MastersBlock mastersData={mastersData} />
+      <PortfolioSlider />
+      <MastersBlock />
       <AboutStudioBlock />
       <AdvantagesBlock />
       <EducatuonBlock />
