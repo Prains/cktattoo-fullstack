@@ -127,7 +127,7 @@ const ReviewsBlock = () => {
                   width={500}
                   height={778}
                   alt="отзыв"
-                  className="h-[778px] rounded-[10px] object-cover object-center"
+                  className="h-[778px] rounded-[10px] object-contain"
                 />
               </Carousel.Slide>
             );

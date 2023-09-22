@@ -24,6 +24,7 @@ const ReviewsPage = () => {
                   alt="отзыв cktatto"
                   width={366}
                   height={576}
+                  className='object-contain'
                 />
               </li>
             );
